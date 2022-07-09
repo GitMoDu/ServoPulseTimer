@@ -1,7 +1,12 @@
 # ServoPulseTimer
+
+
 High precision alternative to Arduino Servo PWM.
 
-Scheduler and Timer based Servo PWM generator. Uses Timer1 and Timer2 for up to 4 hardware Servo channels on Arduino AVR 328P.
+Scheduler and Timer based Servo PWM generator. 
+
+Uses Timer1 and Timer2 for up to 4 hardware Servo channels on Arduino AVR 328P.
+
 
 ![](https://github.com/GitMoDu/ServoPulseTimer/blob/master/Media/demomulti.png?raw=true)
 
