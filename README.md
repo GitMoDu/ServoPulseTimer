@@ -39,6 +39,20 @@ Using ServoPulseTimer, the update will be done 20ms +-1, without taking into acc
 
 ## Usage
 
-Include the ServoTimer for your choice.
+Include the ServoTimer for your choice. By including the timer on AVR build, the associated Timer will be used.
 
-Use a static call to pulse all or a selected channel.
+    #include <ServoPulseTimer1.h>
+    #include <ServoPulseTimer2.h>
+
+Use a static call to pre-calculate the output range.
+  
+    const uint16_t Min1 = ServoPulseTimer1::GetRawValueFromNanoseconds(ServoPulseTimer::OutMinNanos);
+    const uint16_t Max1 = ServoPulseTimer1::GetRawValueFromNanoseconds(ServoPulseTimer::OutMaxNanos);
+
+    const uint8_t Min2 = ServoPulseTimer2::GetRawValueFromNanoseconds(ServoPulseTimer::OutMinNanos);
+    const uint8_t Max2 = ServoPulseTimer2::GetRawValueFromNanoseconds(ServoPulseTimer::OutMaxNanos);
+  
+Use a static call to pulse all or a selected channel, using the precalculated output range and the input scale.
+
+    rawValue1 = map(scale, 0, UINT16_MAX, Min1, Max1);
+    ServoPulseTimer1::Pulse(rawValue1)
