@@ -17,6 +17,7 @@ Servo PWM output duration must be interrupt tolerant, i.e. don't change duration
 
 - Up to 4 hardware Servo channels.
 - Each pulse is done individually within a scheduler pass.
+- Each Timer channel-pair can have its own pulse update period.
 - Interrupts may affect the update period, but the PWM output is not affected.
 - Update period can go as low as 4 ms periods, or up to 100 ms or more.
 
