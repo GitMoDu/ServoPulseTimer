@@ -15,6 +15,9 @@ public:
 	static const uint32_t OutMinMicros = OutMinNanos / 1000;
 	static const uint32_t OutRangeMicros = OutRangeNanos / 1000;
 
+	static const uint32_t CPU_FREQUENCY_16 = 16000000L;
+	static const uint32_t CPU_FREQUENCY_8 = 8000000L;
+
 	static const uint32_t LimitNanoseconds(const uint32_t nanos)
 	{
 		if (nanos > ServoPulseTimer::OutMaxNanos)

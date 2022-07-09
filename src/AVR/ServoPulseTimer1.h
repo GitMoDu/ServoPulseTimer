@@ -31,9 +31,6 @@ public:
 		ChannelB = 10	// Pin D10.
 	};
 
-	static const uint32_t CPU_FREQUENCY_16 = 16000000L;
-	static const uint32_t CPU_FREQUENCY_8 = 8000000L;
-
 	/// <summary>
 	/// Template static calculator for ServoPulseTimer1 raw PWM values.
 	/// </summary>
@@ -43,9 +40,9 @@ public:
 	template<const uint32_t CPUFrequency = F_CPU>
 	static const uint16_t GetRawValueFromNanoseconds(const uint32_t nanos)
 	{
-		if (CPUFrequency == CPU_FREQUENCY_16 || CPUFrequency == CPU_FREQUENCY_8)
+		if (CPUFrequency == ServoPulseTimer::CPU_FREQUENCY_16 || CPUFrequency == ServoPulseTimer::CPU_FREQUENCY_8)
 		{
-			const uint16_t outMax = ((uint32_t)TargetPeriod * UINT16_MAX) / (FullPeriod16 / (CPU_FREQUENCY_16 / CPUFrequency));
+			const uint16_t outMax = ((uint32_t)TargetPeriod * UINT16_MAX) / (FullPeriod16 / (ServoPulseTimer::CPU_FREQUENCY_16 / CPUFrequency));
 			const uint16_t outMin = outMax / 2;
 
 			// Scale down by 10 so working value stays under UINT32_MAX, without losing precision on the output.
