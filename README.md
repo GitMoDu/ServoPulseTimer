@@ -1,9 +1,9 @@
 # ServoPulseTimer
 
 
-High precision alternative to Arduino Servo PWM.
+High precision, interrupt friendly alternative to Arduino Servo PWM.
 
-Scheduler and Timer based Servo PWM generator. 
+Single shot operation mode and Timer based Servo PWM command driver. 
 
 Uses Timer1 and Timer2 for up to 4 hardware Servo channels on Arduino AVR 328P.
 
@@ -14,7 +14,7 @@ Uses Timer1 and Timer2 for up to 4 hardware Servo channels on Arduino AVR 328P.
 
 
 ## Context
-A Servo PWM consists of a pulse with a duration of [ 1000 ; 2000] us. In a typical Servo output, the PWM is updated every 20 ms. Using timers for the dual purpose of PWM and update, reduces the Servo PWM resolution down to 20 times. This means 8 bit timers aren't practical for Servo PWM.
+A Servo command consists of a pulse with a duration of [ 1000 ; 2000] us. In a typical Servo command, the PWM is updated every 20 ms. Using timers for the dual purpose of PWM and update, reduces the Servo PWM resolution down to 20 times. This means 8 bit timers aren't practical for Servo PWM.
 
 ### Goals
 Pulse the Servo outputs once on request, so that the pulsing can be done in a scheduler, independent of the pulse.
@@ -33,12 +33,11 @@ Servo PWM output duration must be interrupt tolerant, i.e. don't change duration
 - Update period can go as low as 4 ms periods, or up to 100 ms or more.
 
 ServoPulseTimer1 (16 bit timer)
-- ~14 bits of effective resolution
-- Some reduction in resolution with F_CPU = 8 MHz and lower.
+- ~14 bits of effective resolution with F_CPU = 16 MHz
+- ~13 bits of effective resolution with F_CPU = 8 MHz
 
 ServoPulseTimer2 (8 bit timer)
-- ~6 bits of effective Servo resolution
-- Same resolution for F_CPU = 8 MHz and F_CPU = 16 MHz.
+- ~6 bits of effective Servo resolution with F_CPU = 8 MHz and F_CPU = 16 MHz.
 
 
 ## Captures
